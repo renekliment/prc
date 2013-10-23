@@ -1,0 +1,77 @@
+	char	short	<=	int	<	long (int)	<	long long (int)
+min	8b		16b			16b		32b				64b
+												od C99
+
+signed, unsigned
+
+float				double
+32b					64b
+7-5 platných cifer	15-16 platných cifer
+
+bool
+C99, C++
+
+defautní hodnota se při deklaraci proměnné neinicializuje
+při dělení
+	- oba int -> celočíselné dělení
+	- pokud je alespoň jeden float, či double, tak normální dělení
+
+funguje tam přetypování ... hustý "explicitní přetypování"
+
+%u - unsigned
+u scanf používat &
+
+-lm vložit libm
+
+M_PI
+
+============================================================================
+bitové operace:
+AND		&
+OR		|
+NOT		~
+XOR		^
+LSHIFT	<<
+RSHIFT	>>
+
+posun vlevo - zahodí se a vznikají nuly
+posun vpravo - zahodí se a znaménkový bit se replikuje
+			 - znaménkový bit - 1 je záporné číslo
+
+(a >> 2) & 1
+
+a^= b^= a^= b; přehození
+
+podmínky - 0 - false
+		 - cokoliv jiného - true
+
+continue - na další iteraci rovnou
+
+a & 1 - ověření sudosti / lichosti
+============================================================================
+"Jakej je problém s funkcí scanf? Že uživatel je hovado."
+
+scanf vrací počet načtených masek
+		vrací EOF, když ani neotevře sti
+printf vrací počet úspěšně zapsaných znaků
+
+char muj[4] = "ahoj"; // prostě tam tu nulu neuloží a třeba při zjišťování délky řetězce to prostě jede dál, než narazí na nulu
+
+<string.h>
+
+strlen(ret);
+strcat(dst, src);
+int strcmp(ret1, ret2);
+	- nula, když jsou stejné
+	- záporné, kladné, když je ten, či ten delší / kratší
+strcpy(dst, src); // dst už musí existovat
+
+<stdio.h>
+
+puts(ret);
+int getchar(); // když ok, tak vrací char přetypovaný na int, když chyba, tak vrací EOF (který je záporný)
+putchar(int c);
+
+nepsat čísla zbytečně, nechat znaky z ASCII tabulky, ať je vidět, co to je
+============================================================================
+int pole[5] = {}; // tímhle vynuluju pole, když dám míň hodnot, než je chlívků, tak se zbytek donuluje
