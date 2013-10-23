@@ -5,15 +5,14 @@ int main(void)
 	char c;
 
 	while ((c = getchar()) != EOF) {
+// also possible
 /*
-		if (c == 'a'
-			|| c == 'e'
-			|| c == 'i'
-			|| c == 'o'
-			|| c == 'u'
+		if (c != 'a'
+			&& c != 'e'
+			&& c != 'i'
+			&& c != 'o'
+			&& c != 'u'
 		) {
-
-		} else {
 			putchar(c);
 		}
 */

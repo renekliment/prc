@@ -32,7 +32,7 @@ int main(int argc, char **argv)
 	int shift;
 	shift = atoi(argv[2]);
 
-	if (shift >= 'Z' - 'A' + 1) {
+	if (shift > 'Z' - 'A') {
 		shift %= 'Z' - 'A' + 1;
 	}
 
