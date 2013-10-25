@@ -12,15 +12,14 @@ int main(void)
 
 	while ((c = getchar()) != EOF) {
 
-		if (c == ' '
-			|| c == '\n'
-			|| (c >= 'A' && c <= 'Z')
-			|| (c >= 'a' && c <= 'z')
-		) {
-			if (c >= 'A' && c <= 'Z') {
-				c += ('a' - 'A');
-			}
+		if (c >= 'A' && c <= 'Z') {
+			c += ('a' - 'A');
+		}
 
+		if ((c >= 'a' && c <= 'z')
+			|| c == ' '
+			|| c == '\n'
+		) {
 			putchar(c);
 
 			if (c == '\n') {

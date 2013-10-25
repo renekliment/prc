@@ -29,8 +29,7 @@ int main(int argc, char **argv)
 	}
 
 	/* Let's check the shift given by user is a nice value and do sthing with it if it's not */
-	int shift;
-	shift = atoi(argv[2]);
+	int shift = atoi(argv[2]);
 
 	if (shift > 'Z' - 'A') {
 		shift %= 'Z' - 'A' + 1;
@@ -41,21 +40,21 @@ int main(int argc, char **argv)
 	}
 
 	/* Encrypt, decrypt, yay! */
-	int c;
-
+	char c;
 	while ((c = getchar()) != EOF) {
-		if ((c >= 'A' && c <= 'Z')
-			|| (c >= 'a' && c <= 'z')
-		) {
-			if (c >= 'A' && c <= 'Z') {
-				c += ('a' - 'A');
-			}
 
-			c += shift;
-			if (c > 'z') {
-				c = 'a' - 1 + (c - 'z');
-			} else if (c < 'a') {
-				c = 'z' + 1 - ('a' - c);
+		if (c >= 'A' && c <= 'Z') {
+			c += ('a' - 'A');
+		}
+
+		if (c >= 'a' && c <= 'z') {
+
+			if (c + shift > 'z') {
+				c = 'a' - 1 + (c + shift - 'z');
+			} else if (c + shift < 'a') {
+				c = 'z' + 1 - ('a' - (c + shift));
+			} else {
+				c += shift;
 			}
 
 			putchar(c);
