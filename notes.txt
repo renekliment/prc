@@ -75,3 +75,24 @@ putchar(int c);
 nepsat čísla zbytečně, nechat znaky z ASCII tabulky, ať je vidět, co to je
 ============================================================================
 int pole[5] = {}; // tímhle vynuluju pole, když dám míň hodnot, než je chlívků, tak se zbytek donuluje
+============================================================================
+mantisa (číslice bez desetinné tečky), exponent (kde je čárka)
+velikost pointeru je dána architekturou, ne tím, na co ukazuje
+
+NULL - konstantní adresa, která je považována za neplatnou ... NESMÍ se dereferencovat, adresa 0, "nulový ukazatel"
+
+void *v; // ukazatel bezdoménového typu, NIKDY se nesmí dereferencovat
+int *pp = (int*)v;
+*pp = 5;
+
+int *p = 15;
+p++; // skáče se o velikost doménového typu
+
+void *v;
+v++; // podle standardu chyba, GCC skáče po bajtech (nejdřív si to přetypuje na char)
+
+const int * cp = &a; // ukazatel na konstantu - může se měnit cp, ale ne a
+int * const pc = &a; // konstantní ukazatel - můžu měnit a, nemůžu měnit ukazatel
+const int * const cc; // všechno je zamklý
+
+int pole[10]; // pole je konstantní ukazatel
