@@ -38,7 +38,7 @@ void* partition (void *base, int n, int size, void *index, int(*compare)(const v
 	swap (index, basec + (n - 1)*size, size); // hodím si pivot na konec
 	for (i = 0; i < n - 1; i++) // procházím postupně danou část pole
 	{
-		if (compare(basec + i*size, basec + (n - 1)*size) <= 0) // pokud je aktuální prvek větší, než pivot
+		if (compare(basec + i*size, basec + (n - 1)*size) <= 0) // pokud je aktuální prvek menší nebo rovno, než pivot
 		{
 			swap(basec + i*size, store, size); // tak ho dám "doleva" pole ... takhle tam budu tlačit postupě prvky < pivot
 			store += size; // index te kopy nalevo posunu doprava
