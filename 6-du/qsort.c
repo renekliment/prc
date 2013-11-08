@@ -30,6 +30,7 @@ void swap (void *first, void *second, int size)
 }
 
 // vysvetlete kod nasledujici funkce
+// setřídí podčást pole
 void* partition (void *base, int n, int size, void *index, int(*compare)(const void*, const void*))
 {
 	int i;

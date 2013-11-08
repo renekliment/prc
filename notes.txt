@@ -96,3 +96,27 @@ int * const pc = &a; // konstantní ukazatel - můžu měnit a, nemůžu měnit 
 const int * const cc; // všechno je zamklý
 
 int pole[10]; // pole je konstantní ukazatel
+============================================================================
+#include<stdlib.h>
+
+void* malloc(size_t n); // když došlo místo, tak hází NULL
+int *p = malloc(sizeof(int)); // v době překladu se nahradí konstantou
+
+void* calloc(n, size); // jako malloc a ještě tu paměť vynuluje
+void* realloc(old, new n); // nafukuje, nebo ufukuje
+void free(void *p);
+
+free(NULL); // tohle je ok
+
+free(*p);
+free(*p); // tohle už je průser podruhý
+
+#include<string.h>
+
+memset(p, num, n); // vem pole a každej jeho char nastav na tuto číslo
+memcpy(dst, src, n);
+memmove(dst, src, n); // oproti memcpy si to ošéfuje překrývání
+
+1000000L - bere jako long
+0.1f - bere jako float
+
