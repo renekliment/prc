@@ -25,10 +25,17 @@ int main(void)
 	if (matrix1 == NULL) return MEMORY_ALLOCATION_ERROR;
 
 	matrix2 = (int*)malloc(n*n*sizeof(int));
-	if (matrix2 == NULL) return MEMORY_ALLOCATION_ERROR;
+	if (matrix2 == NULL) {
+		free(matrix1);
+		return MEMORY_ALLOCATION_ERROR;
+	}
 
 	matrix3 = (int*)calloc(n*n, sizeof(int));
-	if (matrix3 == NULL) return MEMORY_ALLOCATION_ERROR;
+	if (matrix3 == NULL) {
+		free(matrix1);
+		free(matrix2);
+		return MEMORY_ALLOCATION_ERROR;
+	}
 
 	/* Input */
 	for (i=0; i<n; i++) {
