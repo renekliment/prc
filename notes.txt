@@ -119,4 +119,46 @@ memmove(dst, src, n); // oproti memcpy si to ošéfuje překrývání
 
 1000000L - bere jako long
 0.1f - bere jako float
+============================================================================
+#include <stdlib.h>
 
+int main(void)
+{
+	int *mat1 = NULL;
+	int *mat2 = NULL;
+	int ret = -1;
+
+	mat = (int*)malloc(10*sizeof(int));
+	if (mat1 == NULL) {
+		goto cleanup;
+	}
+
+	ret = 0;
+
+	cleanup:
+		free(mat1);
+		free(mat2);
+
+		return ret;
+}
+
+struct zam {
+//
+}; // na konci VŽDY STŘEDNÍK !!!
+
+struct zam p; // smůla v C
+
+typedef old new;
+/***********************************************/
+typedef struct zam {
+// ...
+} zam;
+
+zam p = { /* ... */}
+
+(*pp).jm
+je stejný jako
+pp->jm
+
+#pragma once // aby se hlavičkový soubory nevložily vícekrát
+nikdy nepoužívat dvě podrtržítka za sebou

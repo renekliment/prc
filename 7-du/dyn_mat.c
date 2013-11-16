@@ -22,18 +22,17 @@ int main(void)
 	int *matrix3;
 
 	matrix1 = (int*)malloc(n*n*sizeof(int));
-	if (matrix1 == NULL) return MEMORY_ALLOCATION_ERROR;
-
 	matrix2 = (int*)malloc(n*n*sizeof(int));
-	if (matrix2 == NULL) {
-		free(matrix1);
-		return MEMORY_ALLOCATION_ERROR;
-	}
-
 	matrix3 = (int*)calloc(n*n, sizeof(int));
-	if (matrix3 == NULL) {
+
+	if (matrix1 == NULL
+		|| matrix2 == NULL
+		|| matrix3 == NULL
+	) {
 		free(matrix1);
 		free(matrix2);
+		free(matrix3);
+
 		return MEMORY_ALLOCATION_ERROR;
 	}
 
