@@ -44,7 +44,7 @@ int addItem(List *list, T *item)
 
 T* getItem(List *list, int pos)
 {
-	if (list == NULL || pos < 0 || pos  >= list->length) return NULL;
+	if (list == NULL || pos < 0 || pos >= list->length) return NULL;
 
 	ListItem *current;
 	current = list->first;
@@ -79,16 +79,6 @@ int delItemP(List *list, int pos)
 
 	list->length--;
 
-	if (list->first == list->last) {
-
-		free(list->first);
-
-		list->first = NULL;
-		list->last = NULL;
-
-		return 0;
-	}
-
 	ListItem *temp;
 
 	if (pos == 0) {
@@ -96,6 +86,10 @@ int delItemP(List *list, int pos)
 		temp = list->first;
 		list->first = list->first->next;
 		free(temp);
+
+		if (list->first == list->last) {
+			list->last = NULL;
+		}
 
 	} else {
 
