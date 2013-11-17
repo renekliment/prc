@@ -127,18 +127,16 @@ int delItemP(List *list, int pos)
 
 void delAll(List *list)
 {
-	if (list == NULL) return;
+	if (list == NULL || list->length == 0) return;
 
 	ListItem *previous, *current;
 	previous = list->first;
-	current = list->first->next;
 
-	for (int i=1; i < list->length; i++) {
+	while (previous != NULL) {
+		current = previous->next;
 		free(previous);
 		previous = current;
-		current = current->next;
 	}
-	free(previous);
 
 	list->first = NULL;
 	list->last = NULL;
