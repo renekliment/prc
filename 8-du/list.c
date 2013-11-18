@@ -77,44 +77,39 @@ int delItemP(List *list, int pos)
 {
 	if (list == NULL || pos < 0 || pos >= list->length) return -1;
 
-	list->length--;
-
-	ListItem *temp;
-
 	if (pos == 0) {
-
-		temp = list->first;
-		list->first = list->first->next;
-		free(temp);
 
 		if (list->first == list->last) {
 			list->last = NULL;
 		}
 
+		ListItem *temp;
+
+		temp = list->first;
+		list->first = list->first->next;
+		free(temp);
+
 	} else {
 
 		ListItem *previous, *current;
 		previous = list->first;
-		current = list->first->next;
 
 		for (int i=1; i < pos; i++) {
-			previous = current;
-			current = current->next;
+			previous = previous->next;
 		}
+
+		current = previous->next;
 
 		if (current->next == NULL) {
-			free(current);
-			previous->next = NULL;
 			list->last = previous;
-
-			return 0;
 		}
 
-		temp = current;
 		previous->next = current->next;
-		free(temp);
+		free(current);
 
 	}
+
+	list->length--;
 
 	return 0;
 }
