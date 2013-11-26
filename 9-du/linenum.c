@@ -37,6 +37,8 @@ int main(int argc, char **argv)
 		prev = c;
 	}
 
+	if (prev == '\n' && line != 1) fprintf(out, "%05d ", line);
+
 	fclose(in);
 	fclose(out);
 
