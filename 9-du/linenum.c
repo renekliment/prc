@@ -24,20 +24,28 @@ int main(int argc, char **argv)
 
 	int line = 1;
 	int c;
-	int prev = '\n';
+	char first = 1;
 
 	while ((c = fgetc(in)) != EOF) {
-		if (prev == '\n') {
-			fprintf(out, "%05d ", line);
+
+		if (!first) {
+			fputc(c, out);
+
+			if (c == '\n') {
+				fprintf(out, "%05d ", line);
+				line++;
+			}
+		} else {
+			fprintf(out, "%05d %c", line, c);
 			line++;
+			first = 0;
 		}
 
-		fputc(c, out);
-
-		prev = c;
 	}
 
-	if (prev == '\n' && line != 1) fprintf(out, "%05d ", line);
+	if (first) {
+		fprintf(out, "%05d ", line);
+	}
 
 	fclose(in);
 	fclose(out);

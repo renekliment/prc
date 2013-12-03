@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <math.h>
 
-#define f(x) exp(-2*x*x)
+#define f(x) exp(-2*(x)*(x))
 #define DOUBLE_PRECISION 0.0000000001
 
 enum {
@@ -34,20 +34,20 @@ int main(int argc, char **argv)
 	double x;
 	double fx;
 	double fx_prev = f(a);
-	double fx_next = f((a+h));
+	double fx_next = f(a+h);
 	double d, d2;
 
 	// a, f(a), f'(a+h), f''(a+h)
 	fprintf(out, "%.10lf %.10lf %.10lf %.10lf\n",
 		a,
 		fx_prev,
-		( f((a+2*h)) - fx_prev )/( 2*h ),
-		( f((a+2*h)) - 2*fx_next + fx_prev )/( h*h )
+		( f(a+2*h) - fx_prev )/( 2*h ),
+		( f(a+2*h) - 2*fx_next + fx_prev )/( h*h )
 	);
 
 	for (x = a + h; x < b; x += h) {
 		fx = fx_next;
-		fx_next = f((x+h));
+		fx_next = f(x+h);
 		d = ( fx_next - fx_prev )/( 2*h );
 		d2 = ( fx_next - 2*fx + fx_prev )/( h*h );
 
@@ -57,7 +57,7 @@ int main(int argc, char **argv)
 	}
 
 	// b, f(b), f'(b+h), f''(b+h)
-	//fprintf(out, "%.10lf %.10lf %.10lf %.10lf", b, f(b), d, d2);
+	fprintf(out, "%.10lf %.10lf %.10lf %.10lf", b, f(b), d, d2);
 
 	fclose(out);
 
