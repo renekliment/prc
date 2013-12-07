@@ -24,7 +24,10 @@ int addItem(Tree *tree, int size, void *data)
 
 	void *newItemData;
 	newItemData = malloc(size);
-	if (newItemData == NULL) return TREE_MALLOC_ERROR;
+	if (newItemData == NULL) {
+		free(newItem);
+		return TREE_MALLOC_ERROR;
+	}
 
 	int i;
 	for (i=0; i< size; i++) {
