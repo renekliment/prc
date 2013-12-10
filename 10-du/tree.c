@@ -116,6 +116,7 @@ int maxDel(Tree *tree)
 	}
 
 	if (current->left != NULL) {
+		current->left->parent = current->parent;
 		current->parent->right = current->left;
 	} else {
 		current->parent->right = NULL;
@@ -139,6 +140,7 @@ int minDel(Tree *tree)
 	}
 
 	if (current->right != NULL) {
+		current->right->parent = current->parent;
 		current->parent->left = current->right;
 	} else {
 		current->parent->left = NULL;
